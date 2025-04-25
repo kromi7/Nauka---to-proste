@@ -1,0 +1,169 @@
+<!DOCTYPE html><html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liczymy do 3!</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #fefbe9;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #ff6f61;
+      font-size: 3em;
+    }
+    .number-card {
+      font-size: 5em;
+      color: #4caf50;
+      margin: 20px 0;
+    }
+    .images {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .images img {
+      width: 100px;
+    }
+    .word {
+      font-size: 2em;
+      margin-top: 20px;
+      color: #3f51b5;
+    }
+    .audio-btn {
+      background-color: #ffcc00;
+      padding: 10px 20px;
+      border: none;
+      font-size: 1.5em;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .audio-btn:hover {
+      background-color: #ffd633;
+    }
+    .exercise {
+      margin-top: 40px;
+      background-color: #fff3cd;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+    .exercise h2 {
+      color: #d17b0f;
+    }
+    .exercise img {
+      width: 80px;
+    }
+    .answer-input {
+      font-size: 1.2em;
+      padding: 5px;
+      width: 50px;
+      text-align: center;
+    }
+    .check-btn {
+      margin-top: 10px;
+      background-color: #4caf50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .option-btn {
+      background-color: #90caf9;
+      padding: 10px 15px;
+      margin: 5px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .option-btn:hover {
+      background-color: #64b5f6;
+    }
+  </style>
+</head>
+<body>
+  <h1>Poznajemy liczbę 3</h1>  <div class="number-card">3</div>  <div class="images">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" alt="Jabłko">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" alt="Jabłko">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg" alt="Jabłko">
+  </div>  <div class="word">trzy jabłka</div><button class="audio-btn" onclick="document.getElementById('audio').play()">Usłysz: trzy jabłka</button> <audio id="audio" src="https://upload.wikimedia.org/wikipedia/commons/2/20/Pl-trzy.ogg"></audio>
+
+  <div class="exercise">
+    <h2>Ćwiczenie 1: Ile widzisz jabłek?</h2>
+    <p>Wpisz liczbę jabłek:</p>
+    <input type="number" id="answer1" class="answer-input" min="0" max="10">
+    <br>
+    <button class="check-btn" onclick="checkAnswer1()">Sprawdź</button>
+    <p id="feedback1"></p>
+  </div>  <div class="exercise">
+    <h2>Ćwiczenie 2: Wskaż liczbę 3</h2>
+    <p>Wybierz poprawną odpowiedź:</p>
+    <button class="option-btn" onclick="checkAnswer2(2)">2</button>
+    <button class="option-btn" onclick="checkAnswer2(3)">3</button>
+    <button class="option-btn" onclick="checkAnswer2(4)">4</button>
+    <p id="feedback2"></p>
+  </div>  <div class="exercise">
+    <h2>Ćwiczenie 3: Co jest o jeden więcej niż 2?</h2>
+    <input type="number" id="answer3" class="answer-input" min="0" max="10">
+    <br>
+    <button class="check-btn" onclick="checkAnswer3()">Sprawdź</button>
+    <p id="feedback3"></p>
+  </div>  <div class="exercise">
+    <h2>Ćwiczenie 4: Policz misie</h2>
+    <div class="images">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Teddy_bear_icon.png" alt="Miś">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Teddy_bear_icon.png" alt="Miś">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/88/Teddy_bear_icon.png" alt="Miś">
+    </div>
+    <input type="number" id="answer4" class="answer-input" min="0" max="10">
+    <br>
+    <button class="check-btn" onclick="checkAnswer4()">Sprawdź</button>
+    <p id="feedback4"></p>
+  </div>  <div class="exercise">
+    <h2>Ćwiczenie 5: Dokończ rymowankę</h2>
+    <p>Jeden, dwa, ...</p>
+    <input type="text" id="answer5" class="answer-input">
+    <br>
+    <button class="check-btn" onclick="checkAnswer5()">Sprawdź</button>
+    <p id="feedback5"></p>
+  </div>  <script>
+    function checkAnswer1() {
+      const answer = document.getElementById('answer1').value;
+      const feedback = document.getElementById('feedback1');
+      feedback.textContent = (answer == 3) ? 'Brawo! To poprawna odpowiedź!' : 'Spróbuj jeszcze raz!';
+      feedback.style.color = (answer == 3) ? 'green' : 'red';
+    }
+
+    function checkAnswer2(choice) {
+      const feedback = document.getElementById('feedback2');
+      feedback.textContent = (choice === 3) ? 'Świetnie!' : 'Nie, spróbuj ponownie!';
+      feedback.style.color = (choice === 3) ? 'green' : 'red';
+    }
+
+    function checkAnswer3() {
+      const answer = document.getElementById('answer3').value;
+      const feedback = document.getElementById('feedback3');
+      feedback.textContent = (answer == 3) ? 'Brawo! 2 + 1 = 3' : 'Hmm... pomyśl jeszcze raz!';
+      feedback.style.color = (answer == 3) ? 'green' : 'red';
+    }
+
+    function checkAnswer4() {
+      const answer = document.getElementById('answer4').value;
+      const feedback = document.getElementById('feedback4');
+      feedback.textContent = (answer == 3) ? 'Zgadza się! 3 misie.' : 'Spróbuj ponownie!';
+      feedback.style.color = (answer == 3) ? 'green' : 'red';
+    }
+
+    function checkAnswer5() {
+      const answer = document.getElementById('answer5').value.trim();
+      const feedback = document.getElementById('feedback5');
+      feedback.textContent = (answer === 'trzy' || answer === 'Trzy') ? 'Brawo! Jeden, dwa, trzy!' : 'To nie to słowo. Spróbuj jeszcze raz!';
+      feedback.style.color = (answer === 'trzy' || answer === 'Trzy') ? 'green' : 'red';
+    }
+  </script></body>
+</html>
